@@ -4,16 +4,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
-    <title>Profile Photo Generator</title>
+    <link rel="stylesheet" href="reset.css">
+    <title>HGTVDigital - Photo Frame Festival Ao Ba Ba</title>
 </head>
 
 <body>
-    <h1>Profile Photo Generator</h1>
+    <h1>HGTVDigital - Photo Frame Festival ÁO BÀ BA</h1>
 
     <div id="app">
         <input type="file" id="imageInput" accept="image/*">
-        <a id="downloadLink" style="display: none;">Download Image</a>
         <div id="imageWrapper">
             <img id="userImage" alt="User Image">
         </div>
@@ -31,7 +36,7 @@
             <input type="range" id="yPosition" min="0" max="200" step="1" value="0">
         </div>
     </div>
-
+    <a id="downloadLink" style="display: none;" class="btn">Tải ảnh</a>
     <script src="app.js"></script>
 </body>
 
