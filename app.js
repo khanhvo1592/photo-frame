@@ -5,6 +5,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const downloadLink = document.getElementById("downloadLink");
     const adjustControls = document.getElementById("adjustControls");
     const scaleInput = document.getElementById("scale");
+    const rotateInput = document.getElementById("rotate");
     const xPositionInput = document.getElementById("xPosition");
     const yPositionInput = document.getElementById("yPosition");
     const userImage = document.getElementById("userImage");
@@ -34,6 +35,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // Sự kiện lắng nghe cho các input thay đổi
     scaleInput.addEventListener("input", updatePreview);
+    rotateInput.addEventListener("input", updatePreview);
     xPositionInput.addEventListener("input", updatePreview);
     yPositionInput.addEventListener("input", updatePreview);
 
@@ -58,19 +60,26 @@ document.addEventListener("DOMContentLoaded", function () {
         ctx.clearRect(0, 0, canvas.width, canvas.height);
 
         const scale = parseFloat(scaleInput.value);
-        const x = parseInt(xPositionInput.value);
-        const y = parseInt(yPositionInput.value);
+        const rotate = parseInt(rotateInput.value);
+        const xPosition = parseInt(xPositionInput.value);
+        const yPosition = parseInt(yPositionInput.value);
 
         const userImageElement = new Image();
         userImageElement.src = userImage.src;
         userImageElement.onload = () => {
+            // Dùng transformations để xoay và vẽ hình ảnh
+            ctx.save(); // Lưu trạng thái hiện tại của canvas
+            ctx.translate(canvas.width / 2, canvas.height / 2); // Di chuyển vị trí gốc của hình ảnh vào giữa canvas
+            ctx.rotate((rotate * Math.PI) / 180); // Xoay hình ảnh (đổi độ sang radian)
             ctx.drawImage(
                 userImageElement,
-                x,
-                y,
+                (-userImageElement.width * scale) / 2 + xPosition,
+                (-userImageElement.height * scale) / 2 + yPosition,
                 userImageElement.width * scale,
                 userImageElement.height * scale
             );
+            ctx.restore(); // Khôi phục trạng thái trước đó của canvas
+
             ctx.drawImage(frame, 0, 0, frame.width, frame.height);
 
             resultImage.src = canvas.toDataURL();

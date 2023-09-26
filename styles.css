@@ -1,9 +1,6 @@
 * {
     box-sizing: border-box;
 }
-:root {
-    --primary-color: #0f1b4c;
-}
 html,
 body {
     scroll-behavior: smooth;
@@ -15,20 +12,78 @@ body {
     font-size: 1.6rem;
     font-family: "Poppins", sans-serif;
 }
-/* common */
-h1 {
-    margin-top: 20px;
+a {
+    text-decoration: none;
 }
+/*********************** header *******************************/
+/* CSS cho header */
+.header {
+    /* padding: 20px; */
+    display: flex;
+    background-color: #8b3329;
+    justify-content: center;
+    width: 100vw;
+}
+h1 {
+    font-size: 2.5rem;
+    font-weight: 700;
+}
+/* CSS cho điện thoại di động */
+@media (max-width: 767px) {
+    body {
+        font-size: 1.4rem; /* Giảm kích thước font chữ cho điện thoại di động */
+    }
+
+    .header {
+        width: 100vw;
+        padding: 10px; /* Giảm padding của header */
+    }
+
+    .logo img {
+        width: 200px; /* Giảm kích thước hình ảnh logo cho điện thoại di động */
+    }
+
+    #app {
+        width: 100%; /* Để phần này có chiều rộng 100% trên điện thoại di động */
+        margin: 10px; /* Điều chỉnh khoảng cách biên */
+    }
+
+    /* Hiển thị canvas và hình ảnh trên điện thoại di động */
+    canvas,
+    #app img {
+        display: block; /* Hiển thị các phần tử này */
+    }
+
+    /* Điều chỉnh nút trên điện thoại di động */
+    .btn {
+        padding: 20px 40px; /* Giảm kích thước nút */
+    }
+
+    /* Điều chỉnh font-size cho badge trên điện thoại di động */
+    .badge {
+        font-size: 1.6rem;
+    }
+}
+/*************************** Social */
+
+.logo {
+    margin-top: 10px;
+    position: relative;
+}
+.logo img {
+    width: 300px;
+}
+/* app chỉnh ảnh */
 
 #app {
     margin: 20px auto;
     border-radius: 12px;
-    border: 1px solid #bbbbbb;
-    width: 1110px;
+    /* border: 1px solid #bbbbbb; */
+    /* width: 1110px; */
 }
 
 canvas,
-img {
+#app img {
     display: none;
     max-width: 100%;
     margin: auto;
@@ -45,6 +100,7 @@ img {
 
 input[type="range"] {
     width: 100%;
+    height: 20px; /* Điều chỉnh chiều cao của thanh trượt */
 }
 
 #imageWrapper {
@@ -62,17 +118,27 @@ input[type="range"] {
     margin: auto;
 }
 .btn {
-    background-color: #4158d0;
-    background-image: linear-gradient(
-        43deg,
-        #4158d0 0%,
-        #c850c0 46%,
-        #ffcc70 100%
-    );
     padding: 30px 60px;
-    width: 100px;
-    margin: auto;
+    max-width: 300px;
+    margin: 36px auto;
     border-radius: 10px;
     color: #fff;
     font-size: 1.6rem;
+}
+.badge {
+    font-size: 2rem;
+}
+.form-range {
+}
+/* ------------------Footer------------------- */
+.footer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+}
+.footer a {
+    font-size: 1.5rem;
+    font-weight: 600;
 }
