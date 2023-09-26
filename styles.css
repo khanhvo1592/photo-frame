@@ -63,6 +63,11 @@ h1 {
     .badge {
         font-size: 1.6rem;
     }
+    /* footer */
+    .footer {
+        padding: 10px;
+        width: 100%;
+    }
 }
 /*************************** Social */
 
@@ -146,6 +151,33 @@ input[type="range"] {
 
 /* hightlight */
 .highlight {
+    /*
+* Prefixed by https://autoprefixer.github.io
+* PostCSS: v8.4.14,
+* Autoprefixer: v10.4.7
+* Browsers: last 4 version
+*/
+
+    background-image: -webkit-gradient(
+        linear,
+        left top,
+        right top,
+        from(#ff8177),
+        color-stop(0%, #ff867a),
+        color-stop(21%, #ff8c7f),
+        color-stop(52%, #f99185),
+        color-stop(78%, #cf556c),
+        to(#b12a5b)
+    );
+    background-image: -o-linear-gradient(
+        left,
+        #ff8177 0%,
+        #ff867a 0%,
+        #ff8c7f 21%,
+        #f99185 52%,
+        #cf556c 78%,
+        #b12a5b 100%
+    );
     background-image: linear-gradient(
         to right,
         #ff8177 0%,
