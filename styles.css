@@ -56,7 +56,7 @@ h1 {
 
     /* Điều chỉnh nút trên điện thoại di động */
     .btn {
-        padding: 10px 20px; /* Giảm kích thước nút */
+        padding: 6px 12px; /* Giảm kích thước nút */
     }
 
     /* Điều chỉnh font-size cho badge trên điện thoại di động */
@@ -129,7 +129,7 @@ input[type="range"] {
     margin: auto;
 }
 .btn {
-    padding: 30px 60px;
+    padding: 15px 20px;
     max-width: 300px;
     margin: 36px auto;
     border-radius: 10px;
@@ -145,6 +145,7 @@ input[type="range"] {
 .footer {
     display: flex;
     flex-direction: column;
+    margin-bottom: 20px;
     text-align: center;
     align-items: center;
     justify-content: center;
@@ -152,6 +153,13 @@ input[type="range"] {
 }
 .footer a {
     font-weight: 600;
+}
+.cta-social {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
 }
 
 /* hightlight */
