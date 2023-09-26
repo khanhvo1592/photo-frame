@@ -56,7 +56,7 @@ h1 {
 
     /* Điều chỉnh nút trên điện thoại di động */
     .btn {
-        padding: 20px 40px; /* Giảm kích thước nút */
+        padding: 10px 20px; /* Giảm kích thước nút */
     }
 
     /* Điều chỉnh font-size cho badge trên điện thoại di động */
@@ -66,6 +66,11 @@ h1 {
     /* footer */
     .footer {
         padding: 10px;
+        width: 100%;
+    }
+    .cta-social {
+        padding: 10px;
+        margin: 10px;
         width: 100%;
     }
 }
