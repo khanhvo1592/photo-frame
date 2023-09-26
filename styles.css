@@ -26,7 +26,7 @@ a {
 }
 h1 {
     font-size: 2.5rem;
-    font-weight: 700;
+    font-weight: 600;
 }
 /* CSS cho điện thoại di động */
 @media (max-width: 767px) {
