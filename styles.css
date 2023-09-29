@@ -166,6 +166,10 @@ input[type="range"] {
     align-items: center;
     justify-content: center;
 }
+/* Adujsment  */
+.fas {
+    font-size: 0.8rem;
+}
 
 /* hightlight */
 .highlight {
