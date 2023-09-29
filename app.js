@@ -10,8 +10,10 @@ document.addEventListener("DOMContentLoaded", function () {
     const yPositionInput = document.getElementById("yPosition");
     const userImage = document.getElementById("userImage");
     const frame = new Image();
+    const increaseScaleButton = document.getElementById("increaseScale");
+    const decreaseScaleButton = document.getElementById("decreaseScale");
 
-    // Hàm để tải ảnh mặc định
+    // Function to load the default image
     function loadDefaultImage() {
         const ctx = canvas.getContext("2d");
         ctx.clearRect(0, 0, canvas.width, canvas.height);
@@ -27,19 +29,23 @@ document.addEventListener("DOMContentLoaded", function () {
             resultImage.src = canvas.toDataURL();
             resultImage.style.display = "block";
 
-            // Hiển thị liên kết tải về
+            // Display the download link
             downloadLink.href = canvas.toDataURL();
             downloadLink.style.display = "block";
         };
     }
 
-    // Sự kiện lắng nghe cho các input thay đổi
+    // Event listeners for input changes
     scaleInput.addEventListener("input", updatePreview);
     rotateInput.addEventListener("input", updatePreview);
     xPositionInput.addEventListener("input", updatePreview);
     yPositionInput.addEventListener("input", updatePreview);
 
-    // Gọi hàm để tải ảnh mặc định khi trang web được tải
+    // Event listeners for scale adjustment buttons
+    increaseScaleButton.addEventListener("click", increaseScale);
+    decreaseScaleButton.addEventListener("click", decreaseScale);
+
+    // Load the default image when the page loads
     loadDefaultImage();
 
     imageInput.addEventListener("change", () => {
@@ -48,13 +54,13 @@ document.addEventListener("DOMContentLoaded", function () {
             const reader = new FileReader();
             reader.onload = function (e) {
                 userImage.src = e.target.result;
-                updatePreview(); // Tự động cập nhật xem trước khi tải lên.
+                updatePreview(); // Automatically update the preview upon upload.
             };
             reader.readAsDataURL(file);
         }
     });
 
-    // Hàm cập nhật xem trước
+    // Function to update the preview
     function updatePreview() {
         const ctx = canvas.getContext("2d");
         ctx.clearRect(0, 0, canvas.width, canvas.height);
@@ -67,10 +73,10 @@ document.addEventListener("DOMContentLoaded", function () {
         const userImageElement = new Image();
         userImageElement.src = userImage.src;
         userImageElement.onload = () => {
-            // Dùng transformations để xoay và vẽ hình ảnh
-            ctx.save(); // Lưu trạng thái hiện tại của canvas
-            ctx.translate(canvas.width / 2, canvas.height / 2); // Di chuyển vị trí gốc của hình ảnh vào giữa canvas
-            ctx.rotate((rotate * Math.PI) / 180); // Xoay hình ảnh (đổi độ sang radian)
+            // Use transformations to rotate and draw the image
+            ctx.save(); // Save the current state of the canvas
+            ctx.translate(canvas.width / 2, canvas.height / 2); // Move the origin of the image to the center of the canvas
+            ctx.rotate((rotate * Math.PI) / 180); // Rotate the image (convert degrees to radians)
             ctx.drawImage(
                 userImageElement,
                 (-userImageElement.width * scale) / 2 + xPosition,
@@ -78,19 +84,35 @@ document.addEventListener("DOMContentLoaded", function () {
                 userImageElement.width * scale,
                 userImageElement.height * scale
             );
-            ctx.restore(); // Khôi phục trạng thái trước đó của canvas
+            ctx.restore(); // Restore the previous state of the canvas
 
             ctx.drawImage(frame, 0, 0, frame.width, frame.height);
 
             resultImage.src = canvas.toDataURL();
             resultImage.style.display = "block";
 
-            // Hiển thị liên kết tải về
+            // Display the download link
             downloadLink.style.display = "block";
             downloadLink.addEventListener("click", () => {
                 downloadLink.href = canvas.toDataURL();
-                downloadLink.download = "image.png"; // Đặt tên tệp tải về ở đây.
+                downloadLink.download = "image.png"; // Set the filename to download here.
             });
         };
+    }
+
+    // Function to increase the scale
+    function increaseScale() {
+        const currentScale = parseFloat(scaleInput.value);
+        const newScale = Math.min(currentScale + 0.1, 3); // Increase by 0.1, but limit to a maximum of 3
+        scaleInput.value = newScale;
+        updatePreview();
+    }
+
+    // Function to decrease the scale
+    function decreaseScale() {
+        const currentScale = parseFloat(scaleInput.value);
+        const newScale = Math.max(currentScale - 0.1, 0.1); // Decrease by 0.1, but limit to a minimum of 0.1
+        scaleInput.value = newScale;
+        updatePreview();
     }
 });

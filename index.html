@@ -9,7 +9,9 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
-
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+        integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="reset.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
@@ -45,11 +47,25 @@
         </div>
         <canvas id="canvas" class="mt-3"></canvas>
         <img id="resultImage" alt="Generated Profile Photo" class="img-fluid">
+        <div class="alert alert-primary" role="alert">
+            <strong>Lưu ảnh trên iphone</strong> Chạm giữ vào hình > <strong>Lưu hình ảnh</strong>
+        </div>
+
         <div id="adjustControls" class="mt-3">
             <p>Chỉnh sửa hình ảnh:</p>
             <div class="mb-3">
                 <label for="scale" class="form-label">Zoom:</label>
-                <input type="range" id="scale" class="form-range" min="0.1" max="3" step="0.1" value="1">
+                <div class="input-scale">
+                    <span class="input-group-btn">
+                        <button type="button" class="btn btn-secondary" id="decreaseScale"><i
+                                class="fas fa-minus"></i></button>
+                    </span>
+                    <input type="range" id="scale" class="form-range" min="0.1" max="3" step="0.1" value="1.5">
+                    <span class="input-group-btn">
+                        <button type="button" class="btn btn-secondary" id="increaseScale"><i
+                                class="fas fa-plus"></i></button>
+                    </span>
+                </div>
             </div>
             <div class="mb-3">
                 <label for="rotate" class="form-label">Xoay ảnh:</label>
@@ -64,7 +80,7 @@
                 <input type="range" id="yPosition" class="form-range" min="0" max="200" step="1" value="100">
             </div>
         </div>
-        <a id="downloadLink" style="display: none;" class="btn btn-primary">DOWNLOAD</a>
+        <a id="downloadLink" style="display: none;" class="btn btn-primary">Tải ảnh</a>
 
     </div>
     <!-- footer -->

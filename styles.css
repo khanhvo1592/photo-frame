@@ -161,6 +161,11 @@ input[type="range"] {
     align-items: center;
     padding: 10px;
 }
+.input-scale {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
 
 /* hightlight */
 .highlight {
